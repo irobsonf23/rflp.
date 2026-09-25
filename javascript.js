@@ -4,6 +4,26 @@
    3D INTERACTION
 ===================================================== */
 
+/* =========================
+   MENU — PÁGINA ATIVA
+========================= */
+
+const currentPage =
+    window.location.pathname.split("/").pop() || "index.html";
+
+const menuLinks = document.querySelectorAll(".menu a");
+
+menuLinks.forEach(link => {
+
+    const linkPage = link.getAttribute("href");
+
+    if (linkPage === currentPage) {
+        link.classList.add("active");
+    }
+
+});
+
+
 
 /* =========================
    OBJETO 3D
