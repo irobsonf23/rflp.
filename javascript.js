@@ -4,6 +4,7 @@
    3D INTERACTION
 ===================================================== */
 
+
 /* =========================
    MENU — ABA ATIVA
 ========================= */
@@ -28,7 +29,6 @@ menuLinks.forEach(link => {
 ========================= */
 
 const hero3d = document.getElementById("hero3d");
-
 
 if (hero3d) {
 
@@ -78,12 +78,6 @@ if (hero3d) {
 
     animate3D();
 
-
-    /*
-        Quando o mouse sai da página,
-        o objeto volta suavemente
-        para a posição original.
-    */
 
     document.addEventListener(
         "mouseleave",
@@ -222,100 +216,6 @@ floatingCards.forEach((card) => {
 
 });
 
-
-/* =========================
-   FORMULÁRIO → WHATSAPP
-========================= */
-
-const contactForm =
-    document.getElementById(
-        "contactForm"
-    );
-
-
-if (contactForm) {
-
-    contactForm.addEventListener(
-        "submit",
-        function (event) {
-
-            event.preventDefault();
-
-
-            const nome =
-                document
-                    .getElementById("name")
-                    .value
-                    .trim();
-
-
-            const email =
-                document
-                    .getElementById("email")
-                    .value
-                    .trim();
-
-
-            const mensagem =
-                document
-                    .getElementById("message")
-                    .value
-                    .trim();
-
-
-            const numeroWhatsApp =
-                "5511945220806";
-
-
-            const texto =
-
-`Olá, RFLP!
-
-Meu nome é: ${nome}
-
-Meu e-mail: ${email}
-
-Gostaria de falar sobre:
-
-${mensagem}`;
-
-
-            const mensagemCodificada =
-                encodeURIComponent(texto);
-
-
-            const url =
-                `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
-
-
-            window.open(
-                url,
-                "_blank"
-            );
-
-
-            contactForm.reset();
-
-        }
-    );
-
-}
-
-
-/* =========================
-   ANIMAÇÃO DE ENTRADA
-========================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
-
-        document.body.classList.add(
-            "loaded"
-        );
-
-    }
-);
 
 /* =========================
    FORMULÁRIO → NEON + WHATSAPP
@@ -477,3 +377,19 @@ ${mensagem}`;
     );
 
 }
+
+
+/* =========================
+   ANIMAÇÃO DE ENTRADA
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        document.body.classList.add(
+            "loaded"
+        );
+
+    }
+);
