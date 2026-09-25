@@ -537,6 +537,17 @@ body {
    DESTAQUE ABA ATIVA
 ========================= */
 
+.menu a.active {
+    color: #ffffff;
+
+    text-shadow:
+        0 0 6px rgba(143, 23, 63, 0.8),
+        0 0 14px rgba(143, 23, 63, 0.55),
+        0 0 25px rgba(143, 23, 63, 0.35);
+
+    filter: brightness(1.15);
+}
+
 .menu a.active::after {
     content: "";
 
