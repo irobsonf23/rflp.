@@ -316,3 +316,164 @@ document.addEventListener(
 
     }
 );
+
+/* =========================
+   FORMULÁRIO → NEON + WHATSAPP
+========================= */
+
+const contactForm =
+    document.getElementById(
+        "contactForm"
+    );
+
+
+if (contactForm) {
+
+    contactForm.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+
+            const nome =
+                document
+                    .getElementById("name")
+                    .value
+                    .trim();
+
+
+            const email =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim();
+
+
+            const mensagem =
+                document
+                    .getElementById("message")
+                    .value
+                    .trim();
+
+
+            if (!nome || !email || !mensagem) {
+
+                alert(
+                    "Preencha todos os campos."
+                );
+
+                return;
+
+            }
+
+
+            try {
+
+                /* =========================
+                   SALVAR NO NEON
+                ========================= */
+
+                const resposta =
+                    await fetch(
+                        "/api/contato",
+                        {
+
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify({
+
+                                    nome: nome,
+
+                                    email: email,
+
+                                    mensagem: mensagem
+
+                                })
+
+                        }
+                    );
+
+
+                const resultado =
+                    await resposta.json();
+
+
+                if (!resposta.ok) {
+
+                    throw new Error(
+                        resultado.mensagem ||
+                        "Erro ao salvar contato."
+                    );
+
+                }
+
+
+                /* =========================
+                   WHATSAPP
+                ========================= */
+
+                const numeroWhatsApp =
+                    "5511945220806";
+
+
+                const texto =
+
+`Olá, RFLP!
+
+Meu nome é: ${nome}
+
+Meu e-mail: ${email}
+
+Gostaria de falar sobre:
+
+${mensagem}`;
+
+
+                const mensagemCodificada =
+                    encodeURIComponent(
+                        texto
+                    );
+
+
+                const url =
+                    `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
+
+
+                window.open(
+                    url,
+                    "_blank"
+                );
+
+
+                /* =========================
+                   LIMPAR FORMULÁRIO
+                ========================= */
+
+                contactForm.reset();
+
+
+            } catch (error) {
+
+                console.error(
+                    "Erro ao enviar contato:",
+                    error
+                );
+
+
+                alert(
+                    "Não foi possível enviar sua mensagem. Tente novamente."
+                );
+
+            }
+
+        }
+    );
+
+}
