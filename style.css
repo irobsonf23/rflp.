@@ -1,0 +1,2533 @@
+/* =====================================================
+   RFLP
+   3D STYLE
+===================================================== */
+
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: #ffffff;
+
+    background:
+        radial-gradient(
+            circle at 70% 40%,
+            rgba(120, 19, 52, 0.14),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(100, 0, 35, 0.12),
+            transparent 30%
+        ),
+        #050505;
+
+    overflow-x: hidden;
+
+    perspective: 1200px;
+}
+
+
+/* =========================
+   CENA 3D
+========================= */
+
+.scene {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 0;
+
+    perspective: 1200px;
+}
+
+
+/* =========================
+   GRID DO FUNDO
+========================= */
+
+.grid-floor {
+
+    position: absolute;
+
+    width: 180%;
+
+    height: 70%;
+
+    left: -40%;
+
+    bottom: -30%;
+
+    transform:
+        perspective(500px)
+        rotateX(62deg);
+
+    background-image:
+
+        linear-gradient(
+            rgba(120, 19, 52, 0.09) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(120, 19, 52, 0.09) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    mask-image:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,1),
+            transparent
+        );
+
+    opacity: 0.4;
+
+    animation:
+        gridMove 12s linear infinite;
+}
+
+
+@keyframes gridMove {
+
+    from {
+        transform:
+            perspective(500px)
+            rotateX(62deg)
+            translateY(0);
+    }
+
+    to {
+        transform:
+            perspective(500px)
+            rotateX(62deg)
+            translateY(70px);
+    }
+
+}
+
+
+/* =========================
+   ORBES
+========================= */
+
+.orb {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(70px);
+
+    opacity: 0.25;
+
+    animation:
+        orbFloat 8s ease-in-out infinite;
+}
+
+
+.orb-1 {
+
+    width: 350px;
+
+    height: 350px;
+
+    background: #781334;
+
+    top: 10%;
+
+    right: -100px;
+}
+
+
+.orb-2 {
+
+    width: 280px;
+
+    height: 280px;
+
+    background: #401020;
+
+    bottom: 5%;
+
+    left: -100px;
+
+    animation-delay: -4s;
+}
+
+
+@keyframes orbFloat {
+
+    0%,
+    100% {
+        transform:
+            translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform:
+            translate3d(0, -35px, 0);
+    }
+
+}
+
+
+/* =========================
+   FORMAS FLUTUANTES
+========================= */
+
+.floating-shape {
+
+    position: absolute;
+
+    border: 1px solid
+        rgba(143, 23, 63, 0.25);
+
+    transform-style:
+        preserve-3d;
+
+    animation:
+        floatingShape 8s ease-in-out infinite;
+}
+
+
+.shape-1 {
+
+    width: 100px;
+
+    height: 100px;
+
+    right: 8%;
+
+    top: 18%;
+
+    transform:
+        rotateX(45deg)
+        rotateY(45deg);
+
+}
+
+
+.shape-2 {
+
+    width: 55px;
+
+    height: 55px;
+
+    left: 10%;
+
+    top: 25%;
+
+    transform:
+        rotateX(50deg)
+        rotateY(30deg);
+
+    animation-delay: -3s;
+
+}
+
+
+.shape-3 {
+
+    width: 75px;
+
+    height: 75px;
+
+    left: 16%;
+
+    bottom: 20%;
+
+    transform:
+        rotateX(30deg)
+        rotateY(60deg);
+
+    animation-delay: -5s;
+
+}
+
+
+@keyframes floatingShape {
+
+    0%,
+    100% {
+
+        transform:
+            translate3d(0, 0, 0)
+            rotateX(40deg)
+            rotateY(40deg)
+            rotateZ(0deg);
+
+    }
+
+    50% {
+
+        transform:
+            translate3d(0, -30px, 20px)
+            rotateX(80deg)
+            rotateY(100deg)
+            rotateZ(25deg);
+
+    }
+
+}
+
+
+/* =========================
+   PARTICULAS
+========================= */
+
+.particle {
+
+    position: absolute;
+
+    width: 4px;
+
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: #a51b4b;
+
+    box-shadow:
+        0 0 15px
+        rgba(165, 27, 75, 0.8);
+
+    animation:
+        particleFloat 6s ease-in-out infinite;
+}
+
+
+.particle-1 {
+    top: 20%;
+    left: 35%;
+}
+
+.particle-2 {
+    top: 65%;
+    left: 45%;
+    animation-delay: -2s;
+}
+
+.particle-3 {
+    top: 30%;
+    right: 30%;
+    animation-delay: -4s;
+}
+
+.particle-4 {
+    bottom: 25%;
+    right: 15%;
+    animation-delay: -1s;
+}
+
+.particle-5 {
+    top: 75%;
+    left: 20%;
+    animation-delay: -3s;
+}
+
+
+@keyframes particleFloat {
+
+    0%,
+    100% {
+        transform:
+            translate3d(0, 0, 0);
+
+        opacity: 0.25;
+    }
+
+    50% {
+
+        transform:
+            translate3d(0, -35px, 30px);
+
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================
+   MARCA D'ÁGUA
+========================= */
+
+.watermark {
+
+    position: fixed;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 650px;
+
+    opacity: 0.025;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+}
+
+
+.watermark img {
+
+    width: 100%;
+
+    display: block;
+
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 20;
+
+    width: 100%;
+
+    padding: 30px 7%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+.logo {
+
+    position: absolute;
+
+    left: 7%;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 24px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    transition: 0.3s;
+
+}
+
+
+.logo:hover {
+
+    color: #a51b4b;
+
+    text-shadow:
+        0 0 20px
+        rgba(165, 27, 75, 0.5);
+
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+.menu {
+
+    display: flex;
+
+    gap: 45px;
+
+}
+
+
+.menu a {
+
+    position: relative;
+
+    color: #888;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    transition: 0.3s;
+
+}
+
+
+.menu a:hover,
+.menu a.active {
+
+    color: #ffffff;
+
+}
+
+
+.menu a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: -10px;
+
+    width: 0;
+
+    height: 2px;
+
+    background: #8f173f;
+
+    transform:
+        translateX(-50%);
+
+    transition: 0.3s;
+
+}
+
+
+.menu a:hover::after,
+.menu a.active::after {
+
+    width: 100%;
+
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+
+    position: relative;
+
+    z-index: 5;
+
+    min-height:
+        calc(100vh - 150px);
+
+    padding:
+        50px 9%
+        100px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 80px;
+
+}
+
+
+/* =========================
+   TEXTO
+========================= */
+
+.hero-content {
+
+    max-width: 650px;
+
+}
+
+
+.subtitle {
+
+    display: inline-block;
+
+    margin-bottom: 20px;
+
+    color: #a51b4b;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+}
+
+
+.hero h1 {
+
+    font-size:
+        clamp(45px, 6vw, 82px);
+
+    line-height: 1.02;
+
+    font-weight: 800;
+
+    letter-spacing: -3px;
+
+}
+
+
+.hero h1 span {
+
+    color: #8f173f;
+
+    text-shadow:
+        0 0 35px
+        rgba(143, 23, 63, 0.35);
+
+}
+
+
+.hero p {
+
+    max-width: 570px;
+
+    margin-top: 30px;
+
+    color: #999;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================
+   BOTÕES
+========================= */
+
+.buttons {
+
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 40px;
+
+}
+
+
+.btn {
+
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        15px 25px;
+
+    border-radius: 6px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    transition:
+        transform 0.3s,
+        box-shadow 0.3s;
+
+    overflow: hidden;
+
+}
+
+
+.primary {
+
+    color: #fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #9a1944,
+            #5d0e29
+        );
+
+    box-shadow:
+        0 10px 35px
+        rgba(120, 19, 52, 0.25);
+
+}
+
+
+.primary::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: -100%;
+
+    width: 60%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.15),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+
+    transition: 0.6s;
+
+}
+
+
+.primary:hover::before {
+
+    left: 140%;
+
+}
+
+
+.primary:hover {
+
+    transform:
+        translateY(-5px)
+        translateZ(15px);
+
+    box-shadow:
+        0 20px 45px
+        rgba(120, 19, 52, 0.4);
+
+}
+
+
+.secondary {
+
+    color: #fff;
+
+    background:
+        rgba(255,255,255,0.015);
+
+    border:
+        1px solid #332027;
+
+    backdrop-filter:
+        blur(10px);
+
+}
+
+
+.secondary:hover {
+
+    border-color: #781334;
+
+    transform:
+        translateY(-5px)
+        translateZ(15px);
+
+}
+
+
+/* =========================
+   OBJETO 3D
+========================= */
+
+.hero-3d {
+
+    position: relative;
+
+    width: 480px;
+
+    height: 480px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transform-style:
+        preserve-3d;
+
+    transition:
+        transform 0.15s ease-out;
+
+}
+
+/* =====================================================
+SOBRE — 3D
+===================================================== */
+
+.about {
+position: relative;
+z-index: 5;
+max-width: 1200px;
+margin: auto;
+padding: 70px 7% 120px;
+}
+
+/* =========================
+PERFIL 3D
+========================= */
+
+.about-profile {
+text-align: center;
+margin-bottom: 90px;
+}
+
+.profile-photo {
+position: relative;
+
+width: 190px;
+height: 190px;
+
+margin: 0 auto 28px;
+
+border-radius: 50%;
+
+padding: 5px;
+
+background:
+    linear-gradient(
+        135deg,
+        #a51b4b,
+        #2a0815,
+        #781334
+    );
+
+box-shadow:
+    0 0 70px
+    rgba(120, 19, 52, 0.3),
+
+    0 25px 60px
+    rgba(0,0,0,0.5);
+
+transform-style: preserve-3d;
+
+transition:
+    transform 0.15s ease-out;
+
+}
+
+.profile-photo::before {
+
+content: "";
+
+position: absolute;
+
+inset: -12px;
+
+border-radius: 50%;
+
+border:
+    1px solid
+    rgba(165,27,75,0.25);
+
+transform:
+    translateZ(-20px);
+
+}
+
+.profile-photo img {
+
+position: relative;
+
+z-index: 2;
+
+width: 100%;
+height: 100%;
+
+object-fit: cover;
+
+border-radius: 50%;
+
+transform:
+    translateZ(20px);
+
+}
+
+.profile-glow {
+
+position: absolute;
+
+inset: -30px;
+
+border-radius: 50%;
+
+background:
+    radial-gradient(
+        circle,
+        rgba(120,19,52,0.25),
+        transparent 65%
+    );
+
+filter: blur(20px);
+
+}
+
+.about-profile h1 {
+
+font-size: 32px;
+
+margin-bottom: 8px;
+
+}
+
+.about-profile > span {
+
+color: #a51b4b;
+
+font-size: 12px;
+
+font-weight: 700;
+
+letter-spacing: 3px;
+
+}
+
+/* =========================
+TEXTO
+========================= */
+
+.about-content {
+
+max-width: 800px;
+
+margin: auto;
+
+text-align: center;
+
+}
+
+.about-content h2 {
+
+font-size:
+    clamp(35px,5vw,55px);
+
+line-height: 1.1;
+
+margin-bottom: 25px;
+
+}
+
+.about-content h2 span {
+
+color: #8f173f;
+
+text-shadow:
+    0 0 30px
+    rgba(143,23,63,0.3);
+
+}
+
+.about-content p {
+
+color: #999;
+
+line-height: 1.8;
+
+font-size: 16px;
+
+margin-bottom: 15px;
+
+}
+
+/* =========================
+SKILLS 3D
+========================= */
+
+.skills {
+
+display: flex;
+
+justify-content: center;
+
+flex-wrap: wrap;
+
+gap: 15px;
+
+margin-top: 35px;
+
+perspective: 800px;
+
+}
+
+.skills span {
+
+padding:
+    13px 22px;
+
+color: #ccc;
+
+font-size: 11px;
+
+font-weight: 700;
+
+letter-spacing: 1px;
+
+border:
+    1px solid
+    #35121e;
+
+background:
+    rgba(16,11,13,0.7);
+
+backdrop-filter:
+    blur(10px);
+
+border-radius: 7px;
+
+transform-style:
+    preserve-3d;
+
+transition:
+    transform 0.15s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+
+}
+
+.skills span {
+
+border-color:
+    #781334;
+
+box-shadow:
+    0 15px 35px
+    rgba(120,19,52,0.2);
+
+}
+
+/* =========================
+PROJETOS
+========================= */
+
+.projects {
+
+margin-top: 120px;
+
+}
+
+.section-title {
+
+text-align: center;
+
+margin-bottom: 50px;
+
+}
+
+.section-title h2 {
+
+font-size: 42px;
+
+margin-bottom: 12px;
+
+}
+
+.section-title p {
+
+color: #777;
+
+}
+
+/* =========================
+GRID
+========================= */
+
+.project-grid {
+
+display: grid;
+
+grid-template-columns:
+    repeat(3,1fr);
+
+gap: 25px;
+
+perspective: 1200px;
+
+}
+
+/* =========================
+CARD 3D
+========================= */
+
+.project-card {
+
+position: relative;
+
+overflow: hidden;
+
+background:
+    rgba(16,11,13,0.75);
+
+border:
+    1px solid #281119;
+
+border-radius: 12px;
+
+backdrop-filter:
+    blur(12px);
+
+transform-style:
+    preserve-3d;
+
+transition:
+    transform 0.15s ease-out,
+    border-color 0.3s,
+    box-shadow 0.3s;
+
+}
+
+.project-card::before {
+
+content: "";
+
+position: absolute;
+
+inset: 0;
+
+background:
+    radial-gradient(
+        circle at var(--mouse-x,50%)
+        var(--mouse-y,50%),
+        rgba(165,27,75,0.16),
+        transparent 35%
+    );
+
+opacity: 0;
+
+transition: opacity 0.3s;
+
+pointer-events: none;
+
+}
+
+.project-card:hover::before {
+
+opacity: 1;
+
+}
+
+.project-card {
+
+border-color:
+    #781334;
+
+box-shadow:
+    0 30px 70px
+    rgba(0,0,0,0.45);
+
+}
+
+/* =========================
+IMAGEM
+========================= */
+
+.project-image {
+
+position: relative;
+
+height: 200px;
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+
+background:
+    radial-gradient(
+        circle at center,
+        #35101e,
+        #0d0809 70%
+    );
+
+transform:
+    translateZ(25px);
+
+}
+
+.project-image::after {
+
+content: "";
+
+position: absolute;
+
+inset: 20px;
+
+border:
+    1px solid
+    rgba(165,27,75,0.12);
+
+transform:
+    perspective(500px)
+    rotateX(45deg);
+
+}
+
+.project-image span {
+
+position: relative;
+
+z-index: 2;
+
+color: #68213b;
+
+font-size: 13px;
+
+font-weight: 800;
+
+letter-spacing: 3px;
+
+}
+
+.project-number {
+
+position: absolute;
+
+top: 18px;
+
+right: 20px;
+
+z-index: 3;
+
+color: rgba(255,255,255,0.15);
+
+font-size: 28px;
+
+font-weight: 800;
+
+}
+
+/* =========================
+INFORMAÇÕES
+========================= */
+
+.project-info {
+
+padding: 25px;
+
+transform:
+    translateZ(15px);
+
+}
+
+.project-info h3 {
+
+font-size: 20px;
+
+margin-bottom: 10px;
+
+}
+
+.project-info p {
+
+color: #888;
+
+line-height: 1.6;
+
+font-size: 14px;
+
+margin-bottom: 20px;
+
+}
+
+.project-info a {
+
+color: #a51b4b;
+
+text-decoration: none;
+
+font-size: 13px;
+
+font-weight: 700;
+
+}
+
+.project-info a {
+
+color: #d13b70;
+
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media (max-width: 900px) {
+
+.project-grid {
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+}
+
+}
+
+@media (max-width: 600px) {
+
+.about {
+
+    padding:
+        50px 6%
+        80px;
+
+}
+
+
+.profile-photo {
+
+    width: 155px;
+
+    height: 155px;
+
+}
+
+
+.project-grid {
+
+    grid-template-columns: 1fr;
+
+}
+
+
+.section-title h2 {
+
+    font-size: 34px;
+
+}
+
+}
+
+
+
+
+
+/* =========================
+   LOGO 3D
+========================= */
+
+.logo-3d {
+
+    position: relative;
+
+    width: 350px;
+
+    height: 300px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transform-style:
+        preserve-3d;
+
+    transform:
+        translateZ(40px);
+
+}
+
+
+.logo-glow {
+
+    position: absolute;
+
+    width: 280px;
+
+    height: 280px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(120, 19, 52, 0.45),
+            transparent 65%
+        );
+
+    filter: blur(15px);
+
+    transform:
+        translateZ(-20px);
+
+}
+
+
+.logo-inner {
+
+    position: relative;
+
+    width: 245px;
+
+    height: 245px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 35% 25%,
+            #3a101e,
+            #12090d 55%,
+            #070707
+        );
+
+    border:
+        1px solid
+        rgba(165, 27, 75, 0.5);
+
+    box-shadow:
+
+        inset 0 0 50px
+        rgba(120, 19, 52, 0.25),
+
+        0 0 60px
+        rgba(120, 19, 52, 0.2);
+
+    transform-style:
+        preserve-3d;
+
+}
+
+
+.logo-inner::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -10px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(165, 27, 75, 0.35);
+
+    transform:
+        translateZ(-5px);
+
+}
+
+
+.logo-inner img {
+
+    width: 125%;
+
+    max-width: none;
+
+    object-fit: contain;
+
+    transform:
+        translateZ(30px);
+
+    filter:
+        drop-shadow(
+            0 15px 20px
+            rgba(0,0,0,0.5)
+        );
+
+}
+
+
+/* =========================
+   ÓRBITAS
+========================= */
+
+.orbit {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(165, 27, 75, 0.3);
+
+    transform-style:
+        preserve-3d;
+
+}
+
+
+.orbit-one {
+
+    width: 390px;
+
+    height: 150px;
+
+    transform:
+        rotateX(65deg)
+        rotateZ(-20deg);
+
+    animation:
+        orbitRotate 10s linear infinite;
+
+}
+
+
+.orbit-two {
+
+    width: 420px;
+
+    height: 170px;
+
+    transform:
+        rotateY(65deg)
+        rotateZ(20deg);
+
+    animation:
+        orbitRotateTwo 12s linear infinite;
+
+}
+
+
+.orbit-three {
+
+    width: 330px;
+
+    height: 330px;
+
+    transform:
+        rotateX(70deg);
+
+    border-color:
+        rgba(165, 27, 75, 0.16);
+
+    animation:
+        orbitPulse 7s ease-in-out infinite;
+
+}
+
+
+@keyframes orbitRotate {
+
+    from {
+        transform:
+            rotateX(65deg)
+            rotateZ(0deg);
+    }
+
+    to {
+        transform:
+            rotateX(65deg)
+            rotateZ(360deg);
+    }
+
+}
+
+
+@keyframes orbitRotateTwo {
+
+    from {
+        transform:
+            rotateY(65deg)
+            rotateZ(0deg);
+    }
+
+    to {
+        transform:
+            rotateY(65deg)
+            rotateZ(-360deg);
+    }
+
+}
+
+
+@keyframes orbitPulse {
+
+    0%,
+    100% {
+        transform:
+            rotateX(70deg)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            rotateX(70deg)
+            scale(1.08);
+    }
+
+}
+
+
+/* =========================
+   CARDS FLUTUANTES
+========================= */
+
+.floating-card {
+
+    position: absolute;
+
+    padding:
+        12px 18px;
+
+    border:
+        1px solid
+        rgba(165, 27, 75, 0.35);
+
+    background:
+        rgba(20, 8, 13, 0.7);
+
+    backdrop-filter:
+        blur(10px);
+
+    border-radius: 8px;
+
+    color: #bbb;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    box-shadow:
+        0 15px 35px
+        rgba(0,0,0,0.3);
+
+    transform-style:
+        preserve-3d;
+
+    animation:
+        cardFloat 5s ease-in-out infinite;
+
+}
+
+
+.card-one {
+
+    top: 20px;
+
+    right: 25px;
+
+}
+
+
+.card-two {
+
+    left: 5px;
+
+    bottom: 100px;
+
+    animation-delay:
+        -2s;
+
+}
+
+
+.card-three {
+
+    right: 15px;
+
+    bottom: 35px;
+
+    animation-delay:
+        -3.5s;
+
+}
+
+
+@keyframes cardFloat {
+
+    0%,
+    100% {
+        transform:
+            translate3d(0,0,30px)
+            rotateY(0deg);
+    }
+
+    50% {
+        transform:
+            translate3d(0,-20px,50px)
+            rotateY(12deg);
+    }
+
+}
+
+
+/* =========================
+   SCROLL
+========================= */
+
+.scroll-indicator {
+
+    position: absolute;
+
+    z-index: 10;
+
+    left: 50%;
+
+    bottom: 70px;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #555;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+}
+
+
+.scroll-indicator div {
+
+    width: 1px;
+
+    height: 35px;
+
+    background:
+        linear-gradient(
+            #781334,
+            transparent
+        );
+
+    animation:
+        scrollLine 1.8s ease-in-out infinite;
+
+}
+
+
+@keyframes scrollLine {
+
+    0%,
+    100% {
+        transform:
+            scaleY(0.5);
+
+        opacity: 0.4;
+    }
+
+    50% {
+        transform:
+            scaleY(1);
+
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    position: relative;
+
+    z-index: 20;
+
+    padding:
+        25px 7%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    border-top:
+        1px solid #1d1216;
+
+    color: #555;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* =========================
+   ENTRADA
+========================= */
+
+.reveal {
+
+    opacity: 0;
+
+    transform:
+        translateY(30px);
+
+    animation:
+        revealUp 0.9s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+
+}
+
+
+.delay-1 {
+    animation-delay: 0.15s;
+}
+
+.delay-2 {
+    animation-delay: 0.3s;
+}
+
+.delay-3 {
+    animation-delay: 0.45s;
+}
+
+
+@keyframes revealUp {
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 1000px) {
+
+    .hero {
+
+        padding-left: 6%;
+
+        padding-right: 6%;
+
+        gap: 30px;
+
+    }
+
+
+    .hero-3d {
+
+        width: 400px;
+
+        height: 400px;
+
+    }
+
+
+    .logo-inner {
+
+        width: 210px;
+
+        height: 210px;
+
+    }
+
+
+    .logo-glow {
+
+        width: 240px;
+
+        height: 240px;
+
+    }
+
+}
+
+
+@media (max-width: 850px) {
+
+    .hero {
+
+        flex-direction: column;
+
+        text-align: center;
+
+        padding-top: 50px;
+
+    }
+
+
+    .hero-content {
+
+        max-width: 700px;
+
+    }
+
+
+    .hero p {
+
+        margin-left: auto;
+
+        margin-right: auto;
+
+    }
+
+
+    .buttons {
+
+        justify-content: center;
+
+    }
+
+
+    .hero-3d {
+
+        margin-top: 20px;
+
+    }
+
+
+    .scroll-indicator {
+
+        display: none;
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .header {
+
+        padding:
+            25px 5%;
+
+        flex-direction: column;
+
+        gap: 25px;
+
+    }
+
+
+    .logo {
+
+        position: static;
+
+        font-size: 20px;
+
+    }
+
+
+    .menu {
+
+        gap: 25px;
+
+    }
+
+
+    .menu a {
+
+        font-size: 12px;
+
+    }
+
+
+    .hero {
+
+        min-height: auto;
+
+        padding:
+            45px 6%
+            80px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size:
+            clamp(42px, 12vw, 60px);
+
+        letter-spacing:
+            -1px;
+
+    }
+
+
+    .hero p {
+
+        font-size: 15px;
+
+    }
+
+
+    .buttons {
+
+        flex-direction: column;
+
+        width: 100%;
+
+    }
+
+
+    .btn {
+
+        width: 100%;
+
+    }
+
+
+    .hero-3d {
+
+        width: 320px;
+
+        height: 320px;
+
+        transform: scale(0.85);
+
+    }
+
+
+    .orbit-one {
+
+        width: 300px;
+
+        height: 120px;
+
+    }
+
+
+    .orbit-two {
+
+        width: 320px;
+
+        height: 130px;
+
+    }
+
+
+    .orbit-three {
+
+        width: 260px;
+
+        height: 260px;
+
+    }
+
+
+    .logo-inner {
+
+        width: 180px;
+
+        height: 180px;
+
+    }
+
+
+    .logo-glow {
+
+        width: 210px;
+
+        height: 210px;
+
+    }
+
+
+    .floating-card {
+
+        font-size: 9px;
+
+        padding:
+            9px 12px;
+
+    }
+
+
+    .watermark {
+
+        width: 400px;
+
+    }
+
+
+    footer {
+
+        padding:
+            20px 6%;
+
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 10px;
+
+    }
+
+}
+
+/* =====================================================
+CONTATO — 3D
+===================================================== */
+
+.contact {
+
+position: relative;
+
+z-index: 5;
+
+max-width: 1150px;
+
+margin: auto;
+
+min-height:
+    calc(100vh - 150px);
+
+padding:
+    80px 7%;
+
+display: grid;
+
+grid-template-columns:
+    1fr 1fr;
+
+gap: 80px;
+
+align-items: center;
+
+perspective: 1200px;
+
+}
+
+/* =========================
+TÍTULO
+========================= */
+
+.contact-content h1 {
+
+font-size:
+    clamp(42px,5vw,65px);
+
+line-height: 1.05;
+
+margin-bottom: 25px;
+
+}
+
+.contact-content h1 span {
+
+color: #8f173f;
+
+text-shadow:
+    0 0 30px
+    rgba(143,23,63,0.35);
+
+}
+
+.contact-content > p {
+
+color: #999;
+
+line-height: 1.8;
+
+max-width: 500px;
+
+}
+
+/* =========================
+LINKS
+========================= */
+
+.contact-links {
+
+margin-top: 35px;
+
+display: flex;
+
+flex-direction: column;
+
+gap: 15px;
+
+perspective: 1000px;
+
+}
+
+.contact-item {
+
+position: relative;
+
+display: flex;
+
+align-items: center;
+
+gap: 15px;
+
+padding: 16px;
+
+text-decoration: none;
+
+color: #fff;
+
+background:
+    rgba(16,11,13,0.7);
+
+border:
+    1px solid #29121a;
+
+border-radius: 8px;
+
+backdrop-filter:
+    blur(12px);
+
+transform-style:
+    preserve-3d;
+
+transition:
+    transform 0.15s ease-out,
+    border-color 0.3s,
+    box-shadow 0.3s;
+
+}
+
+.contact-item {
+
+border-color:
+    #781334;
+
+box-shadow:
+    0 25px 50px
+    rgba(0,0,0,0.4);
+
+}
+
+.contact-icon {
+
+width: 48px;
+
+height: 48px;
+
+flex-shrink: 0;
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+
+background:
+    linear-gradient(
+        135deg,
+        #8f173f,
+        #4d0c24
+    );
+
+border-radius: 7px;
+
+transform:
+    translateZ(20px);
+
+box-shadow:
+    0 10px 25px
+    rgba(120,19,52,0.25);
+
+}
+
+.contact-icon i {
+
+font-size: 21px;
+
+}
+
+.contact-item small {
+
+display: block;
+
+color: #777;
+
+font-size: 9px;
+
+letter-spacing: 2px;
+
+margin-bottom: 5px;
+
+}
+
+.contact-item strong {
+
+font-size: 14px;
+
+}
+
+/* =========================
+FORMULÁRIO
+========================= */
+
+.contact-form-area {
+
+position: relative;
+
+padding: 40px;
+
+background:
+    linear-gradient(
+        145deg,
+        rgba(25,10,16,0.9),
+        rgba(10,7,8,0.85)
+    );
+
+border:
+    1px solid #281119;
+
+border-radius: 14px;
+
+box-shadow:
+    0 30px 80px
+    rgba(0,0,0,0.45),
+
+    inset 0 0 40px
+    rgba(120,19,52,0.04);
+
+backdrop-filter:
+    blur(15px);
+
+transform-style:
+    preserve-3d;
+
+overflow: hidden;
+
+}
+
+.form-glow {
+
+position: absolute;
+
+width: 200px;
+
+height: 200px;
+
+top: -100px;
+
+right: -100px;
+
+border-radius: 50%;
+
+background:
+    rgba(120,19,52,0.25);
+
+filter: blur(50px);
+
+pointer-events: none;
+
+}
+
+#contactForm {
+
+position: relative;
+
+z-index: 2;
+
+display: flex;
+
+flex-direction: column;
+
+gap: 12px;
+
+}
+
+#contactForm label {
+
+color: #aaa;
+
+font-size: 12px;
+
+font-weight: 700;
+
+margin-top: 8px;
+
+}
+
+#contactForm input,
+#contactForm textarea {
+
+width: 100%;
+
+padding: 15px;
+
+background:
+    rgba(5,5,5,0.7);
+
+color: #fff;
+
+border:
+    1px solid #2a161d;
+
+border-radius: 6px;
+
+outline: none;
+
+font-family: inherit;
+
+font-size: 14px;
+
+resize: vertical;
+
+transition:
+    border-color 0.3s,
+    box-shadow 0.3s,
+    transform 0.3s;
+
+}
+
+#contactForm input,
+#contactForm textarea {
+
+border-color:
+    #781334;
+
+box-shadow:
+    0 0 0 2px
+    rgba(120,19,52,0.1),
+
+    0 10px 30px
+    rgba(120,19,52,0.08);
+
+transform:
+    translateZ(5px);
+
+}
+
+#contactForm input::placeholder,
+#contactForm textarea::placeholder {
+
+color: #555;
+
+}
+
+#contactForm button {
+
+margin-top: 15px;
+
+}
+
+/* =========================
+RESPONSIVO
+========================= */
+
+@media (max-width: 850px) {
+
+.contact {
+
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+
+    padding:
+        60px 6%
+        80px;
+
+}
+
+}
+
+@media (max-width: 600px) {
+
+.contact {
+
+    padding:
+        50px 6%
+        80px;
+
+}
+
+
+.contact-form-area {
+
+    padding: 25px;
+
+}
+
+}
+
+
+/* =========================
+   ACESSIBILIDADE
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        scroll-behavior:
+            auto !important;
+
+        transition-duration:
+            0.01ms !important;
+
+    }
+
+}
