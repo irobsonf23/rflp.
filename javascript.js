@@ -5,24 +5,22 @@
 ===================================================== */
 
 /* =========================
-   MENU — PÁGINA ATIVA
+   MENU — ABA ATIVA
 ========================= */
 
-const currentPage =
-    window.location.pathname.split("/").pop() || "index.html";
+const currentPath = window.location.pathname;
 
 const menuLinks = document.querySelectorAll(".menu a");
 
 menuLinks.forEach(link => {
 
-    const linkPage = link.getAttribute("href");
+    const linkPath = new URL(link.href).pathname;
 
-    if (linkPage === currentPage) {
+    if (linkPath === currentPath) {
         link.classList.add("active");
     }
 
 });
-
 
 
 /* =========================
